@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Elegance Jewellery - Premium Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, #1a0a2e 0%, #0a0a0a 70%);
+            z-index: -1;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
+            animation: shimmer 20s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+        }
+
+        /* Floating Sparkles */
+        .sparkle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: gold;
+            border-radius: 50%;
+            box-shadow: 0 0 10px gold, 0 0 20px gold;
+            animation: floatSparkle 15s infinite linear;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes floatSparkle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(180deg, rgba(26, 10, 46, 0.95) 0%, rgba(10, 10, 10, 0.8) 100%);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            -webkit-text-fill-color: initial;
+            color: #FFD700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .cart-icon {
+            font-size: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-icon .badge {
+            position: absolute;
+            top: -10px;
+            right: -12px;
+            background: #FFD700;
+            color: #0a0a0a;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 5% 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #aaa;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .hero .cta-btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #0a0a0a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Categories */
+        .categories {
+            padding: 60px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 215, 0, 0.01));
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05), transparent);
+            transition: all 0.6s;
+        }
+
+        .category-card:hover::before {
+            transform: scale(1);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.1);
+        }
+
+        .category-card i {
+            font-size: 48px;
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        .category-card h3 {
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .category-card p {
+            color: #888;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* Products Section */
+        .section-title {
+            padding: 60px 5% 20px;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px 5% 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 215, 0, 0.08);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 50%, rgba(255, 215, 0, 0.02));
+            pointer-events: none;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 215, 0, 0.02));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image .shine {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.1), transparent 50%);
+            animation: rotateShine 8s linear infinite;
+        }
+
+        @keyframes rotateShine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .product-card .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #FF6B6B, #EE5A24);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+
+        .product-card .badge.sold {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #0a0a0a;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .product-card .price {
+            font-size: 24px;
+            color: #FFD700;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+
+        .product-card .price .original {
+            font-size: 16px;
+            color: #666;
+            text-decoration: line-through;
+            margin-left: 10px;
+            font-weight: 300;
+        }
+
+        .product-card .rating {
+            color: #FFD700;
+            margin: 10px 0;
+        }
+
+        .product-card .rating span {
+            color: #888;
+            margin-left: 8px;
+        }
+
+        .product-card .add-to-cart {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #0a0a0a;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .product-card .add-to-cart:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .product-card .add-to-cart:active {
+            transform: scale(0.98);
+        }
+
+        /* Special Offer Banner */
+        .offer-banner {
+            margin: 40px 5%;
+            padding: 50px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.02));
+            border-radius: 25px;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-banner::before {
+            content: '✦';
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.05;
+            right: -50px;
+            top: -100px;
+            color: #FFD700;
+        }
+
+        .offer-banner h2 {
+            font-size: 38px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .offer-banner h2 span {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .offer-banner p {
+            color: #aaa;
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+
+        .offer-banner .offer-btn {
+            padding: 16px 45px;
+            background: transparent;
+            border: 2px solid #FFD700;
+            color: #FFD700;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .offer-banner .offer-btn:hover {
+            background: #FFD700;
+            color: #0a0a0a;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(10, 10, 10, 0.8));
+            padding: 60px 5% 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.05);
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer h4 {
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+
+        .footer p, .footer a {
+            color: #888;
+            line-height: 2;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer a:hover {
+            color: #FFD700;
+        }
+
+        .footer .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .footer .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .footer .social-icons a:hover {
+            border-color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                padding: 20px 5% 60px;
+            }
+
+            .offer-banner h2 {
+                font-size: 28px;
+            }
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                padding: 40px 5%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .categories {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .offer-banner {
+                padding: 30px 20px;
+            }
+
+            .offer-banner h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Animation -->
+    <div class="bg-animation"></div>
+
+    <!-- Sparkles -->
+    <div class="sparkle" style="left:10%; animation-delay:0s;"></div>
+    <div class="sparkle" style="left:25%; animation-delay:3s; width:5px; height:5px;"></div>
+    <div class="sparkle" style="left:40%; animation-delay:6s;"></div>
+    <div class="sparkle" style="left:55%; animation-delay:2s; width:4px; height:4px;"></div>
+    <div class="sparkle" style="left:70%; animation-delay:8s;"></div>
+    <div class="sparkle" style="left:85%; animation-delay:4s; width:6px; height:6px;"></div>
+    <div class="sparkle" style="left:92%; animation-delay:10s;"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-gem"></i> ÉLÉGANCE
+        </div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Collections</a>
+            <a href="#">New Arrivals</a>
+            <a href="#">About</a>
+            <a href="#" class="cart-icon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="badge">3</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Timeless Elegance</h1>
+        <p>Discover our premium collection of handcrafted jewellery</p>
+        <a href="#" class="cta-btn">Explore Collection</a>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="category-card">
+            <i class="fas fa-ring"></i>
+            <h3>Rings</h3>
+            <p>124 Designs</p>
+        </div>
+        <div class="category-card">
+            <i class="fas fa-gem"></i>
+            <h3>Necklaces</h3>
+            <p>89 Designs</p>
+        </div>
+        <div class="category-card">
+            <i class="fas fa-earring"></i>
+            <h3>Earrings</h3>
+            <p>156 Designs</p>
+        </div>
+        <div class="category-card">
+            <i class="fas fa-bolt"></i>
+            <h3>Bracelets</h3>
+            <p>67 Designs</p>
+        </div>
+        <div class="category-card">
+            <i class="fas fa-crown"></i>
+            <h3>Bridal</h3>
+            <p>43 Designs</p>
+        </div>
+        <div class="category-card">
+            <i class="fas fa-clock"></i>
+            <h3>Watches</h3>
+            <p>38 Designs</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <h2 class="section-title">✨ <span>Best Sellers</span></h2>
+    <p class="section-subtitle">Our most loved pieces, curated just for you</p>
+
+    <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="badge">HOT</div>
+            <div class="product-image">
+                <div class="shine"></div>
+                <i class="fas fa-gem" style="color: #FFD700;"></i>
+            </div>
+            <h3>Diamond Solitaire Ring</h3>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span>(42)</span>
+            </div>
+            <div class="price">
+                ₹45,999
+                <span class="original">₹65,000</span>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <div class="badge sold">BEST SELLER</div>
+            <div class="product-image">
+                <div class="shine"></div>
+                <i class="fas fa-crown" style="color: #FFD700;"></i>
+            </div>
+            <h3>Gold Plated Necklace</h3>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>(38)</span>
+            </div>
+            <div class="price">
+                ₹12,499
+                <span class="original">₹18,000</span>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <div class="badge">NEW</div>
+            <div class="product-image">
+                <div class="shine"></div>
+                <i class="fas fa-earring" style="color: #FFD700;"></i>
+            </div>
+            <h3>Pearl Drop Earrings</h3>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span>(56)</span>
+            </div>
+            <div class="price">
+                ₹8,999
+                <span class="original">₹12,500</span>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <div class="badge sold">LIMITED</div>
+            <div class="product-image">
+                <div class="shine"></div>
+                <i class="fas fa-bolt" style="color: #FFD700;"></i>
+            </div>
+            <h3>Tennis Bracelet</h3>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span>(29)</span>
+            </div>
+            <div class="price">
+                ₹24,499
+                <span class="original">₹32,000</span>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+            <div class="badge">HOT</div>
+            <div class="product-image">
+                <div class="shine"></div>
+                <i class="fas fa-gem" style="color: #FF6B6B;"></i>
+            </div>
+            <h3>Ruby Pendant Set</h3>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span>(34)</span>
+            </div>
+            <div class="price">
+                ₹34,999
+                <span class="original">₹48,000</span>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+            <div class="badge sold">BEST SELLER</div>
+            <div class="product-image">
+                <div class="shine"></div>
+                <i class="fas fa-ring" style="color: #FFD700;"></i>
+            </div>
+            <h3>Emerald Engagement Ring</h3>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span>(67)</span>
+            </div>
+            <div class="price">
+                ₹52,499
+                <span class="original">₹75,000</span>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Offer Banner -->
+    <div class="offer-banner">
+        <h2>🎁 <span>Luxury Gift Collection</span></h2>
+        <p>Get upto 40% off on bridal collections. Limited time offer!</p>
+        <button class="offer-btn">Shop Now</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h4>✨ ÉLÉGANCE</h4>
+                <p>Luxury handcrafted jewellery<br>for every special moment.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <a href="#">Collections</a><br>
+                <a href="#">New Arrivals</a><br>
+                <a href="#">Bridal Collection</a><br>
+                <a href="#">Gift Cards</a>
+            </div>
+            <div>
+                <h4>Support</h4>
+                <a href="#">Contact Us</a><br>
+                <a href="#">Returns</a><br>
+                <a href="#">Shipping</a><br>
+                <a href="#">FAQs</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>📞 +91 98765 43210</p>
+                <p>📧 hello@elegance.com</p>
+                <p>📍 Hyderabad, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 ÉLÉGANCE. All rights reserved. | Crafted with 💛</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add to Cart functionality
+        document.querySelectorAll('.add-to-cart').forEach((button, index) => {
+            button.addEventListener('click', function() {
+                const product = this.closest('.product-card');
+                const productName = product.querySelector('h3').textContent;
+                const productPrice = product.querySelector('.price').textContent.trim();
+
+                // Animate button
+                this.textContent = '✓ Added!';
+                this.style.background = '#2ecc71';
+                this.style.color = '#fff';
+
+                setTimeout(() => {
+                    this.textContent = 'Add to Cart';
+                    this.style.background = 'linear-gradient(135deg, #FFD700, #FFA500)';
+                    this.style.color = '#0a0a0a';
+                }, 2000);
+
+                // Update cart badge
+                const badge = document.querySelector('.badge');
+                let count = parseInt(badge.textContent);
+                badge.textContent = count + 1;
+
+                // Alert
+                alert(`✨ ${productName} added to cart!\nPrice: ${productPrice}`);
+            });
+        });
+
+        // Category click effect
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Smooth scroll for CTA
+        document.querySelector('.cta-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.products-grid').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    </script>
+
+</body>
+</html>
